@@ -27,15 +27,15 @@ jobs:
         env:
           KARATE_VERSION: 2.1.3
         run: |
-          curl -LO "https://github.com/karatelabs/karate/releases/download/v$KARATE_VERSION/karate.jar"
+          curl -LO "https://github.com/karatelabs/karate/releases/download/v$KARATE_VERSION/karate-2.1.3.jar"
 
       - name: Run Smoke Tests (PR)
         if: github.event_name == 'pull_request'
-        run: java -jar karate.jar run --tags @smoke -f html,junit:xml features/
+        run: java -jar karate-2.1.3.jar run --tags @smoke -f html,junit:xml features/
 
       - name: Run Regression Tests (Main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: java -jar karate.jar run --tags @regression -f html,junit:xml features/
+        run: java -jar karate-2.1.3.jar run --tags @regression -f html,junit:xml features/
 
       - name: Upload Karate Reports
         if: always()
