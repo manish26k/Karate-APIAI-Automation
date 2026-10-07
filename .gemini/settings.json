@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "karate-dsl": {
+      "command": "node",
+      "args": [
+        ".\\karate-mcp-server\\dist\\index.js"
+      ]
+    },
+    "github": {
+      "command": "C:\\Users\\manish\\Tools\\github-mcp\\github-mcp-server.exe",
+      "args": [
+        "stdio"
+      ]
+    }
+  }
+}

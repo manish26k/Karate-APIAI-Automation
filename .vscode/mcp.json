@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "karate-dsl": {
+      "type": "stdio",
+      "command": "C:/Program Files/nodejs/node.exe",
+      "args": ["C:/Users/manish/Downloads/Karate-AI-Automation/karate-mcp-server/dist/index.js"]
+    }
+  }
+}

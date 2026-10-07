@@ -1,0 +1,8 @@
+Feature: features/auth/me.feature
+Scenario: Get current authenticated user profile
+Endpoint: GET /auth/me
+Environment: dev
+Execution Command: karate.exe features/auth/me.feature
+Execution Result: PASSED
+Passed Scenarios: 1 / 1
+Karate Report Location: file:///C:/Users/manish/Downloads/Karate-AI-Automation/target/karate-reports/karate-summary.html
