@@ -133,3 +133,13 @@ Prefer existing framework patterns over new patterns.
 * Validate changes before creating a PR.
 * Never auto-merge.
 
+## Git Workflow Rules
+* Never modify or commit directly to `main`.
+* Validate Karate changes before GitHub write actions.
+* Use a feature branch for changes.
+* Commit only validated requested changes.
+* Create PR only after validation passes.
+* Never merge PRs automatically.
+* Require explicit user approval before commit, push, or PR creation.
+
+
