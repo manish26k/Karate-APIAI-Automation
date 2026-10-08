@@ -1,4 +1,4 @@
-@product @regression
+@product @regression @ci_fail_test
 Feature: Product API - Get Product By ID
 
   Background:
