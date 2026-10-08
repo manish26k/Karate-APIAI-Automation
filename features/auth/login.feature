@@ -10,7 +10,7 @@ Feature: Auth API - Login
     Given path '/auth/login'
     And request loginData.validUser
     When method post
-    Then status 200
+    Then status 201
     And match response.accessToken == '#string'
     And match response.refreshToken == '#string'
     * def accessToken = response.accessToken
