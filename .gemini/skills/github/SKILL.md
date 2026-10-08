@@ -19,3 +19,12 @@ Rules:
 
 Workflow:
 READ -> PLAN -> VALIDATE -> WRITE -> REPORT
+
+## Controlled Git Workflow
+* Use GitHub MCP for GitHub operations.
+* Confirm repository and target branch before write actions.
+* Never write directly to `main`.
+* Create/use a feature branch for changes.
+* Validate changes before commit or PR.
+* Require explicit user approval before commit, push, or PR creation.
+* Never merge automatically.
