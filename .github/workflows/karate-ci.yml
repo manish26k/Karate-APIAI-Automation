@@ -23,21 +23,31 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Install Karate CLI
+      - name: Download Karate CLI
         env:
           KARATE_VERSION: 2.1.3
         run: |
-          curl -LO "https://github.com/karatelabs/karate/releases/download/v$KARATE_VERSION/karate-linux"
-          chmod +x karate-linux
-          sudo mv karate-linux /usr/local/bin/karate
+          curl -fL -O "https://github.com/karatelabs/karate/releases/download/v$KARATE_VERSION/karate-2.1.3.jar"
 
-      - name: Run Smoke Tests (PR)
+      - name: Run All Tests (PR)
         if: github.event_name == 'pull_request'
-        run: karate run --tags @smoke -f html,junit:xml features/
+        run: |
+          set -o pipefail
+          java -jar karate-2.1.3.jar run -f html,junit:xml features/ | tee karate-output.log
+          if grep -qE "scenarios:\s*0" karate-output.log; then
+            echo "Error: Zero scenarios executed!"
+            exit 1
+          fi
 
       - name: Run Regression Tests (Main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: karate run --tags @regression -f html,junit:xml features/
+        run: |
+          set -o pipefail
+          java -jar karate-2.1.3.jar run --tags @regression -f html,junit:xml features/ | tee karate-output.log
+          if grep -qE "scenarios:\s*0" karate-output.log; then
+            echo "Error: Zero scenarios executed!"
+            exit 1
+          fi
 
       - name: Upload Karate Reports
         if: always()

@@ -133,3 +133,8 @@ Prefer existing framework patterns over new patterns.
 * Validate changes before creating a PR.
 * Never auto-merge.
 
+## Tag & CI Validation Rule
+* Preserve correct tags.
+* Before completing a test, verify local execution and CI selection.
+* Never add tags merely to make CI pass.
+
