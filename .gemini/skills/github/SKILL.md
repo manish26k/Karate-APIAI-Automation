@@ -13,6 +13,7 @@ Rules:
 - Inspect only required files/state.
 - Write only when explicitly requested.
 - Validate before creating a PR.
+- Enforce CI test selection and execution validation before PR creation.
 - Never auto-merge.
 - Never delete repositories/branches or change security/settings unless explicitly requested.
 - Never expose or store credentials.
