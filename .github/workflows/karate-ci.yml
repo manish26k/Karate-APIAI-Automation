@@ -107,7 +107,33 @@ jobs:
       - name: Prepare Pages Directory
         run: |
           mkdir -p public/latest/karate
-          cp -r target/karate-reports/* public/latest/karate/
+          cp -r target/karate-reports/. public/latest/karate/
+
+          REPORT=public/latest/karate/karate-summary.html
+
+          if [ ! -f "$REPORT" ]; then
+            echo "Error: karate-summary.html not found."
+            find public/latest/karate -maxdepth 2 -type f
+            exit 1
+          fi
+
+          REPORT_NAME=$(basename "$REPORT")
+
+          cat > public/index.html <<EOF
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Karate API Automation Reports</title>
+          </head>
+          <body>
+            <h1>Karate API Automation Reports</h1>
+            <p>Latest regression test execution.</p>
+            <p><a href="./latest/karate/$REPORT_NAME">View Karate Test Report</a></p>
+          </body>
+          </html>
+          EOF
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
