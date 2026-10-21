@@ -138,3 +138,11 @@ Prefer existing framework patterns over new patterns.
 * Before completing a test, verify local execution and CI selection.
 * Never add tags merely to make CI pass.
 
+## AI-Generated Test PR Lifecycle Policy
+* **Retain:** Keep PRs open while review, audit, or validation evidence is actively required.
+* **Repair:** Propose surgical code repairs when validation or CI check runs fail; restrict changes strictly to the explicit scope of the task or failure root cause without weakening assertions or rewriting working tests merely to obtain PASS.
+* **Close/Delete:** Require explicit human approval before closing any PR or deleting any remote/local branch.
+* **Merge:** Never auto-merge. Require explicit human approval and sign-off after all required status checks pass and review is complete.
+* **Failure Handling:** Report failed, successful, or skipped CI check runs accurately; never treat skipped checks as passed.
+* **Scope Boundary:** Never modify `main`, CI workflows, branch protection rules, or unrelated PRs without explicit authorization.
+
